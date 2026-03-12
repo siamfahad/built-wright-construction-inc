@@ -1,5 +1,5 @@
 {
-  "name": "buildwright-construction-inc",
+  "name": "builtwright-construction-inc",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,12 +9,18 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "aos": "^2.3.4",
+    "cloudinary": "^2.9.0",
+    "framer-motion": "^12.35.2",
+    "lucide-react": "^0.574.0",
     "next": "16.1.6",
+    "next-cloudinary": "^6.17.5",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
+/* 1. THEME VARIABLES */
 :root {
+  /* Light Mode (White) */
   --background: #ffffff;
   --foreground: #171717;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --accent: #2563eb;
+  --light-espresso: #f9f8f6; 
+  
+  /* Navigation Logic Variables */
+  --nav-text: #000000; /* Black in Light Mode */
 }
 
+/* The 'dark' class is toggled by the HeaderBar button */
+.dark {
+  /* Espresso Mode (Dark Brown) */
+  --background: #1e1814; 
+  --foreground: #fdfcfb;
+  --card-bg: rgba(45, 36, 30, 0.85);
+  --accent: #fed7aa;
+  --light-espresso: #2d241e; 
+
+  /* Navigation Logic Variables */
+  --nav-text: #ffffff; /* White in Espresso Mode */
+}
+
+/* 2. TAILWIND V4 THEME CONFIG */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card-glass: var(--card-bg);
+  --color-accent-prime: var(--accent);
+  --color-light-espresso: var(--light-espresso);
+  --color-nav-text: var(--nav-text);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* 3. BASE STYLES */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* 4. NAVIGATION VISIBILITY LOGIC */
+.theme-text-sync {
+  color: var(--nav-text) !important;
+  transition: color 0.4s ease;
+}
+
+/* 5. ANIMATIONS */
+.building-rise {
+  animation: riseUp 1.2s ease forwards;
+}
+
+@keyframes riseUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in-text {
+  opacity: 0;
+  animation: fadeText 1.5s ease forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeText {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input, select, textarea {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.bg-light-espresso {
+  background-color: var(--light-espresso);
+  transition: background-color 0.5s ease;
+}
+
+
+.snap-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+
+
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Utility to hide scrollbar for that ultra-clean look */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* --- HIDE NEXT.JS / VERCEL BADGES & OVERLAYS --- */
+#vercel-live-feedback, 
+[data-vercel-toolbar],
+#vercel-toolbar,
+.nextjs-toast-errors-parent,
+#nextjs-dev-overlay {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
