@@ -1,14 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // --- ADDED SAFETY RAILS (Prevents Build Crashes) ---
+  
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // --------------------------------------------------
+  
 
   devIndicators: {
     staticIndicator: false,
@@ -26,6 +26,17 @@ const nextConfig: NextConfig = {
 
   async headers() {
     return [
+      {
+        
+        source: '/:path*.(mp4|mov|webm|jpg|jpeg|png|webp|svg|ico)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
       {
         source: '/:path*',
         headers: [
