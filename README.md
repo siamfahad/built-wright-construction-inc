@@ -32,13 +32,7 @@ Security Headers: Hardened next.config.ts with X-Frame-Options (Anti-Phishing/Cl
 
 Bot Mitigation: Optimized metadata and honeypot structures.
 
-🛠️ Getting Started
-First, install dependencies and run the development server:
 
-Bash
-npm install
-npm run dev
-Open http://localhost:3000 with your browser to see the result.
 
 📁 Project Structure Highlights
 /app: Contains the main page logic, including specialized sections for Discovery, Fabrication, and Design.
